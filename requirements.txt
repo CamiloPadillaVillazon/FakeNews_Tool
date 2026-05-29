@@ -1,0 +1,3 @@
+# Optional root requirements. Prefer layer-specific requirements.
+-r backend/requirements.txt
+-r frontend/requirements.txt
