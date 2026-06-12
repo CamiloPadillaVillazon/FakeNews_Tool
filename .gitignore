@@ -7,3 +7,6 @@ __pycache__/
 .env
 .env.*
 .DS_Store
+
+# Modelos entrenados — regenerables con backend/ml_training/train_model.py
+*.pkl
