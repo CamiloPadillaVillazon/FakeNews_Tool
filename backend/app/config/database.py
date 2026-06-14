@@ -1,8 +1,14 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from .settings import settings
 
-# TODO: move URL to env vars
-DATABASE_URL = "postgresql+psycopg2://user:password@localhost:5432/herramienta"
-
-engine = create_engine(DATABASE_URL)
+engine = create_engine(settings.database_url)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()

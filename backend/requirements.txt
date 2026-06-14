@@ -6,3 +6,9 @@ pydantic
 pytesseract
 scikit-learn
 joblib
+opencv-python
+pillow
+python-multipart
+python-dotenv
+pydantic-settings
+nltk

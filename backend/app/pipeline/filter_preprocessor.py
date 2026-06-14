@@ -1,0 +1,16 @@
+import cv2
+import numpy as np
+
+
+def preprocess_image(image_bytes: bytes) -> bytes:
+    arr = np.frombuffer(image_bytes, np.uint8)
+    img = cv2.imdecode(arr, cv2.IMREAD_COLOR)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    denoised = cv2.fastNlMeansDenoising(gray, h=10)
+    thresh = cv2.adaptiveThreshold(
+        denoised, 255,
+        cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+        cv2.THRESH_BINARY, 11, 2
+    )
+    _, encoded = cv2.imencode(".png", thresh)
+    return encoded.tobytes()

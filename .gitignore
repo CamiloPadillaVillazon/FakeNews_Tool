@@ -6,7 +6,15 @@ __pycache__/
 .Python
 .env
 .env.*
+!.env.example
 .DS_Store
 
 # Modelos entrenados — regenerables con backend/ml_training/train_model.py
 *.pkl
+
+# Material de trabajo interno (prompts, borradores, docs) — no publicar
+prompt_*.md
+arquitectura.txt
+Proyecto - Herramienta.docx.md
+CLAUDE.md
+informe_arquitectura.md

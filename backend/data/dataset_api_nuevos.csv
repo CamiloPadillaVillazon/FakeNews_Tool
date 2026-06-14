@@ -1,0 +1,25 @@
+id_registro,fuente_verificadora,url_origen,texto_crudo,categoria_original,label
+1,factual.afp.com,https://factual.afp.com/doc.afp.com.69MT4WF,Si los votos nulos son superiores a los válidos se anulan las elecciones.,Falso,Alta
+2,factual.afp.com,https://factual.afp.com/doc.afp.com.776G663,Video muestra manipulación de voto en elecciones 2025 en Bolivia,Engañoso,Media
+3,factual.afp.com,https://factual.afp.com/doc.afp.com.78AH3NV,El candidato boliviano Rodrigo Paz aseguró que quiere un pueblo ignorante,Engañoso,Media
+4,factual.afp.com,https://factual.afp.com/doc.afp.com.69KD8G3,El padrón electoral de Bolivia tiene un millón de personas más.,Falso,Alta
+5,factual.afp.com,https://factual.afp.com/doc.afp.com.69N92T3,Idea Internacional publicó una encuesta de intención de voto de Bolivia donde Andrónico Rodríguez va primero,Falso,Alta
+6,factual.afp.com,https://factual.afp.com/doc.afp.com.67W6863,"No podrán votar las personas que tengan el carnet antiguo no digitalizado, aunque estén vigentes.",Falso,Alta
+7,boliviaverifica.bo,https://boliviaverifica.bo/pagina-informate-y-decide-bolivia-usa-imagen-del-oep-para-difundir-encuestas-falsas/,Página Infórmate y Decide Bolivia usa imagen del OEP para difundir encuestas falsas,Engañoso,Media
+8,verifica.efe.com,https://verifica.efe.com/tribunal-electoral-bolivia-no-habilito-a-jaime-dunn-como-candidato-presidencial/,El Tribunal Supremo Electoral (TSE) de Bolivia habilitó la candidatura presidencial del economista Jaime Dunn para las elecciones generales que se celebrarán el próximo 17 de agosto.,Falso,Alta
+9,factual.afp.com,https://factual.afp.com/doc.afp.com.66KE664,Presidente del TSE revela la venta de encuestas electorales en un audio,Falso,Alta
+10,boliviaverifica.bo,https://boliviaverifica.bo/el-oep-no-difundio-encuesta-sobre-la-percepcion-del-sistema-electoral/,El OEP difundió encuesta sobre la percepción del sistema electoral,Falso,Alta
+11,boliviaverifica.bo,https://boliviaverifica.bo/no-es-cierto-que-el-padron-electoral-no-se-actualiza-hace-diez-anos/,No es cierto que el padrón electoral no se actualiza hace diez años,Falso,Alta
+12,factual.afp.com,https://factual.afp.com/la-oea-no-reconoce-morales-como-ganador-en-bolivia-y-asegura-que-hubo-acciones-dolosas-para-afectar,OEA informe final no hubo fraude sino irregularidades en Bolivia y reconoce el triunfo de Evo Morales,Engañoso,Media
+13,factual.afp.com,https://factual.afp.com/doc.afp.com.B4CP2CQ,Video muestra a Rodrigo Paz diciendo que privatizará la educación,Falso,Alta
+14,factual.afp.com,https://factual.afp.com/doc.afp.com.B4FA6CQ,Rodrigo Paz no puede mandar a las FFAA de Bolivia por nacer en España,Engañoso,Media
+15,factual.afp.com,https://factual.afp.com/doc.afp.com.B4BX49E,Comandante de las Fuerzas Armadas de Bolivia pide la renuncia del presidente Rodrigo Paz,Falso,Alta
+16,factual.afp.com,https://factual.afp.com/doc.afp.com.B3DP2ZQ,Video muestra a Red Uno informando la renuncia del presidente Rodrigo Paz,Falso,Alta
+17,factual.afp.com,https://factual.afp.com/doc.afp.com.B4G72ZQ,Comandante general de la Policía boliviana exige la renuncia de Rodrigo Paz,Falso,Alta
+18,boliviaverifica.bo,https://boliviaverifica.bo/es-enganoso-decir-que-rodrigo-paz-es-extranjero-y-no-puede-comandar-las-ffaa/,Es engañoso decir que Rodrigo Paz es extranjero y puede comandar las FFAA,Engañoso,Media
+19,boliviaverifica.bo,https://boliviaverifica.bo/publicacion-falsa-reutiliza-una-imagen-de-rodrigo-paz-y-su-familia-para-afirmar-que-salieron-a-espana/,Publicación reutiliza imagen familiar de Rodrigo Paz para difundir información sin respaldo,Falso,Alta
+20,boliviaverifica.bo,https://boliviaverifica.bo/el-presidente-rodrigo-paz-no-declaro-estado-de-excepcion-en-la-paz-y-el-alto/,El presidente Rodrigo Paz declaró estado de excepción en La Paz y El Alto,Falso,Alta
+21,factual.afp.com,https://factual.afp.com/doc.afp.com.B44J99E,Video muestra a Edman Lara siendo proclamado presidente en mayo de 2026,Engañoso,Media
+22,boliviaverifica.bo,https://boliviaverifica.bo/diputado-arce-genera-desinformacion-morales-y-choquehuanca-si-se-dieron-la-mano/,Morales y Choquehuanca sí se dieron la mano,Falso,Alta
+23,verifica.efe.com,https://verifica.efe.com/no-son-imagenes-altercado-reciente-de-indigenas-bolivianos-contra-policia/,"Un video reciente muestra un enfrentamiento entre miembros del grupo indígena los Ponchos Rojos y la policía en La Paz, en medio de las protestas para exigir la renuncia del presidente boliviano Rodrigo Paz.",Falso,Alta
+24,boliviaverifica.bo,https://boliviaverifica.bo/la-dirigente-mercedes-trimarchi-dio-dos-datos-enganosos-sobre-su-estatus-en-argentina-y-las-tierras-de-los-campesinos-en-bolivia/,La dirigente Mercedes Trimarchi dio dos datos engañosos sobre su estatus en Argentina y las tierras de los campesinos en Bolivia,Engañoso,Media
