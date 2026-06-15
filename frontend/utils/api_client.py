@@ -1,6 +1,8 @@
+import os
 import requests
 
-BASE_URL = "http://localhost:8000"
+# En Docker usa la variable de entorno BACKEND_URL; en local cae a localhost:8000
+BASE_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
 
 
 def health_check() -> dict:

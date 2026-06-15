@@ -9,8 +9,6 @@ __pycache__/
 !.env.example
 .DS_Store
 
-# Modelos entrenados — regenerables con backend/ml_training/train_model.py
-*.pkl
 
 # Material de trabajo interno (prompts, borradores, docs) — no publicar
 prompt_*.md

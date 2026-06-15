@@ -1,0 +1,27 @@
+# ── Imagen base: Python 3.11 ligero ──────────────────────────────────────────
+FROM python:3.11-slim
+
+# ── Instalar Tesseract OCR + idioma español + librerías de sistema ────────────
+RUN apt-get update && apt-get install -y \
+    tesseract-ocr \
+    tesseract-ocr-spa \
+    libgl1 \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+# ── Directorio de trabajo dentro del contenedor ───────────────────────────────
+WORKDIR /app
+
+# ── Copiar e instalar dependencias Python primero (aprovecha caché de Docker) ─
+COPY backend/requirements.txt ./backend/requirements.txt
+RUN pip install --no-cache-dir -r backend/requirements.txt
+
+# ── Copiar el resto del código ────────────────────────────────────────────────
+COPY backend/ ./backend/
+COPY .env.example .env.example
+
+# ── Puerto que expone el backend ──────────────────────────────────────────────
+EXPOSE 8000
+
+# ── Comando de arranque ───────────────────────────────────────────────────────
+CMD ["uvicorn", "backend.app.main:app", "--host", "0.0.0.0", "--port", "8000"]

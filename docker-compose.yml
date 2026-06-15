@@ -1,0 +1,55 @@
+services:
+
+  # ── Base de datos PostgreSQL ─────────────────────────────────────────────────
+  db:
+    image: postgres:16-alpine
+    container_name: electoral_db
+    environment:
+      POSTGRES_USER: electoral_user
+      POSTGRES_PASSWORD: electoral_pass
+      POSTGRES_DB: data_electoral_tool
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U electoral_user -d data_electoral_tool"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── Backend FastAPI ──────────────────────────────────────────────────────────
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: electoral_backend
+    environment:
+      DATABASE_URL: postgresql+psycopg2://electoral_user:electoral_pass@db:5432/data_electoral_tool
+      MODELS_DIR: backend/data/models_saved
+    ports:
+      - "8000:8000"
+    volumes:
+      # Se suben los modelos .pkl 
+      - ./backend/data/models_saved:/app/backend/data/models_saved:ro
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ── Frontend Streamlit ───────────────────────────────────────────────────────
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: electoral_frontend
+    environment:
+      BACKEND_URL: http://backend:8000
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
