@@ -1,7 +1,7 @@
 import streamlit as st
 import plotly.graph_objects as go
 
-from utils.ui import COLORS, LABEL_META
+from utils.ui import COLORS, LABEL_META, animated_bars, count_number
 
 _PLOTLY_CONF = {"displayModeBar": False, "staticPlot": False}
 
@@ -9,9 +9,8 @@ _PLOTLY_CONF = {"displayModeBar": False, "staticPlot": False}
 def _confidence_gauge(score: float, color: str) -> go.Figure:
     fig = go.Figure(
         go.Indicator(
-            mode="gauge+number",
+            mode="gauge",
             value=round(score * 100, 1),
-            number={"suffix": "%", "font": {"size": 42, "color": "#F3F7FF", "family": "Inter"}},
             gauge={
                 "axis": {"range": [0, 100], "tickwidth": 1, "tickcolor": "#3A4B5A",
                          "tickfont": {"color": "#8B98AE", "size": 11}},
@@ -28,7 +27,7 @@ def _confidence_gauge(score: float, color: str) -> go.Figure:
         )
     )
     fig.update_layout(
-        height=250, margin=dict(l=24, r=24, t=36, b=8),
+        height=220, margin=dict(l=24, r=24, t=10, b=8),
         paper_bgcolor="rgba(0,0,0,0)", font={"color": "#E6EDF7", "family": "Inter"},
     )
     return fig
@@ -84,10 +83,15 @@ def render_result_card(result: dict):
     c1, c2 = st.columns(2)
     with c1:
         st.markdown("<p style='color:#93A1BC;font-weight:600;margin:6px 0 0'>Confianza del modelo</p>", unsafe_allow_html=True)
+        count_number(top * 100, meta["color"])
         st.plotly_chart(_confidence_gauge(top, meta["color"]), use_container_width=True, config=_PLOTLY_CONF)
     with c2:
         st.markdown("<p style='color:#93A1BC;font-weight:600;margin:6px 0 0'>Distribución por clase</p>", unsafe_allow_html=True)
         st.plotly_chart(_class_donut(scores), use_container_width=True, config=_PLOTLY_CONF)
+
+    # Barras de probabilidad animadas (crecen desde 0)
+    st.markdown("<p style='color:#93A1BC;font-weight:600;margin:10px 0 2px'>Probabilidad por nivel</p>", unsafe_allow_html=True)
+    animated_bars(scores)
 
     # Texto extraido por OCR
     if result.get("fuente") == "imagen":

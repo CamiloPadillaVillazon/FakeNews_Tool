@@ -3,6 +3,8 @@ import pandas as pd
 import streamlit as st
 
 from utils.api_client import get_history
+from utils.animations import render_lottie
+from utils.ui import skeleton_rows, metric_card, COLORS
 
 _EMOJI = {"Alta": "🔴 Alta", "Media": "🟡 Media", "Baja": "🟢 Baja"}
 
@@ -17,16 +19,29 @@ def render():
         if st.button("🔄 Actualizar", use_container_width=True):
             st.rerun()
 
+    cargando = st.empty()
+    with cargando.container():
+        skeleton_rows(6)
     try:
         datos = get_history(limit=200)
     except requests.ConnectionError:
+        cargando.empty()
         st.error("No se pudo conectar al backend. ¿Está corriendo en localhost:8000?")
         return
     except Exception as e:  # noqa: BLE001
+        cargando.empty()
         st.error(f"Error al cargar el historial: {e}")
         return
+    finally:
+        cargando.empty()
 
     if not datos:
+        c1, c2, c3 = st.columns([1, 2, 1])
+        with c2:
+            render_lottie(
+                "empty", height=170,
+                fallback_html="<p style='text-align:center;font-size:2.6rem;margin:0'>🗂️</p>",
+            )
         st.info("Aún no hay análisis registrados. Ve a **Analizar** para crear el primero.")
         return
 
@@ -38,10 +53,10 @@ def render():
     n_media = int((df["label"] == "Media").sum())
     n_baja = int((df["label"] == "Baja").sum())
     m = st.columns(4)
-    m[0].metric("Total de análisis", total)
-    m[1].metric("🔴 Alta", n_alta)
-    m[2].metric("🟡 Media", n_media)
-    m[3].metric("🟢 Baja", n_baja)
+    m[0].markdown(metric_card("Total de análisis", total, COLORS["primary"]), unsafe_allow_html=True)
+    m[1].markdown(metric_card("🔴 Alta", n_alta, COLORS["alta"]), unsafe_allow_html=True)
+    m[2].markdown(metric_card("🟡 Media", n_media, COLORS["media"]), unsafe_allow_html=True)
+    m[3].markdown(metric_card("🟢 Baja", n_baja, COLORS["baja"]), unsafe_allow_html=True)
 
     st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
 
@@ -55,7 +70,6 @@ def render():
     # Preparar tabla de presentacion
     vista = pd.DataFrame({
         "id": df.get("id"),
-        "Fecha": df.get("timestamp"),
         "Fuente": df.get("fuente"),
         "Prioridad": df["label"].map(lambda x: _EMOJI.get(x, x)),
         "Alta": (df.get("score_alta", 0) * 100),
@@ -70,7 +84,6 @@ def render():
         hide_index=True,
         column_config={
             "id": st.column_config.NumberColumn("ID", width="small"),
-            "Fecha": st.column_config.TextColumn("Fecha", width="medium"),
             "Fuente": st.column_config.TextColumn("Fuente", width="small"),
             "Prioridad": st.column_config.TextColumn("Prioridad", width="small"),
             "Alta":  st.column_config.ProgressColumn("🔴 Alta",  format="%.0f%%", min_value=0, max_value=100),

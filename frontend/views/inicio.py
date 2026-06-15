@@ -51,7 +51,7 @@ def render():
         with col:
             st.markdown(
                 f"""<div class="he-card" style="text-align:center">
-                    <div style="font-size:1.6rem;font-weight:800;color:#3B82F6">{n}</div>
+                    <div class="he-step-num">{n}</div>
                     <h4 style="margin-top:4px">{titulo}</h4>
                     <p>{desc}</p>
                 </div>""",
